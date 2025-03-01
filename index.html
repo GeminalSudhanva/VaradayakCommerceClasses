@@ -167,6 +167,9 @@
         .contact-item div {
             flex: 1;
             min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .contact-item p {
@@ -190,19 +193,20 @@
             align-items: center;
             background: var(--accent-secondary);
             color: var(--white);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 8px;
             text-decoration: none;
-            margin-left: 15px;
+            margin: 10px 0 0 0;
             font-weight: 500;
             transition: var(--transition);
-            word-break: keep-all;
-            white-space: nowrap;
+            font-size: 0.95rem;
+            align-self: flex-start;
         }
 
         .whatsapp-btn .material-icons {
             color: var(--white);
-            margin-right: 5px;
+            font-size: 20px;
+            margin-right: 6px;
         }
 
         /* Services Section */
@@ -355,21 +359,13 @@
             .contact-item div {
                 width: 100%;
                 padding: 0;
+                align-items: center;
             }
 
             .whatsapp-btn {
-                margin: 10px auto;
+                align-self: center;
                 padding: 8px 15px;
-                width: fit-content;
-                min-width: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
-            }
-
-            .whatsapp-btn .material-icons {
-                margin: 0;
+                margin: 10px auto 0;
             }
 
             .nav {
@@ -503,6 +499,11 @@
             .whatsapp-btn {
                 padding: 6px 12px;
                 font-size: 0.85rem;
+            }
+
+            .whatsapp-btn .material-icons {
+                font-size: 18px;
+                margin-right: 4px;
             }
 
             .header h2 {

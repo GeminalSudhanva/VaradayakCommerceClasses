@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varadayak Commerce Classes, Dharwad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1A237E;    /* Dark Blue from logo */
+            --secondary-color: #2196F3;   /* Light Blue from logo */
+            --accent-color: #F57C00;      /* Orange from logo */
+            --accent-secondary: #4CAF50;   /* Green from logo */
+            --text-dark: #333333;
+            --text-light: #666;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin: 0;
+        }
+
+        .logo-text span {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.1;
+        }
+
+        .header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background: #f8f9fa;
+        }
+
+        .material-icons {
+            color: var(--accent-secondary);
+            font-size: 28px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background: var(--accent-secondary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Services Section */
+        .services-list {
+            list-style: none;
+        }
+
+        .services-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .services-list li:hover {
+            background: #f8f9fa;
+        }
+
+        .services-list .material-icons {
+            font-size: 32px;
+            padding: 10px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
+        }
+
+        .service-content strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Highlights Section */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .highlight-item:hover {
+            background: #f8f9fa;
+        }
+
+        .highlight-item .material-icons {
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        /* Section Headers */
+        h3 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin: 40px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+        }
+
+        .gallery-caption h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 60px;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .header h2 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .whatsapp-btn {
+                margin: 15px 0 0 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="WhatsApp Image 2025-03-01 at 7.16.07 PM.jpeg" alt="Varadayak Commerce Classes Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>Varadayak Commerce Classes</h1>
+                    <span>Excellence in Commerce Education</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h2>Transform Your Career</h2>
+            <p>Join Dharwad's Premier Commerce Coaching Institute</p>
+        </header>
+
+        <div class="card">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="material-icons">location_on</span>
+                    <div>
+                        <strong>Our Location</strong>
+                        <p>Adarsh Balika High School, Near NTTF, Dharwad, 580001</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="material-icons">phone</span>
+                    <div>
+                        <strong>Contact Us</strong>
+                        <p>9743623027</p>
+                        <a href="https://wa.me/919743623027" class="whatsapp-btn">
+                            <span class="material-icons">whatsapp</span>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Our Specialized Programs</h3>
+            <ul class="services-list">
+                <li>
+                    <span class="material-icons">school</span>
+                    <div class="service-content">
+                        <strong>Vacation Classes</strong>
+                        <p>Intensive coaching programs specially designed for I and II PU commerce students during vacations. Perfect blend of theory and practical knowledge.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="material-icons">school</span>
+                    <div class="service-content">
+                        <strong>Regular Classes</strong>
+                        <p>Comprehensive year-round coaching for I and II PU commerce students. Structured curriculum with regular assessments and doubt clearing sessions.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="material-icons">school</span>
+                    <div class="service-content">
+                        <strong>Degree Coaching</strong>
+                        <p>Specialized coaching for B.Com and BBA students. Focus on building strong fundamentals and practical application of concepts.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Why Students Choose Us</h3>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <span class="material-icons">verified</span>
+                    <div>
+                        <strong>100% Result Guarantee</strong>
+                        <p>Proven track record of excellent results</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="material-icons">psychology</span>
+                    <div>
+                        <strong>Experienced Faculty</strong>
+                        <p>Learn from industry experts</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="material-icons">groups</span>
+                    <div>
+                        <strong>Personalized Attention</strong>
+                        <p>Individual focus on each student</p>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="material-icons">assignment</span>
+                    <div>
+                        <strong>Regular Practice Tests</strong>
+                        <p>Continuous assessment and improvement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card gallery-section">
+            <h3>Life at Varadayak Classes</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <!-- Replace with actual image path -->
+                    <img src="WhatsApp Image 2025-03-01 at 7.29.40 PM.jpeg" alt="Regular Tests" class="gallery-image">
+                    <div class="gallery-caption">
+                        <h4>Regular Test Series</h4>
+                        <p>Weekly tests to track progress and improvement</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Replace with actual image path -->
+                    <img src="WhatsApp Image 2025-03-01 at 7.35.52 PM.jpeg" alt="Success Stories" class="gallery-image">
+                    <div class="gallery-caption">
+                        <h4>Our Success Stories</h4>
+                        <p>Celebrating our students' achievements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 Varadayak Commerce Classes. All rights reserved.</p>
+            <p>Empowering Commerce Education in Dharwad</p>
+        </footer>
+    </div>
+</body>
+</html> 

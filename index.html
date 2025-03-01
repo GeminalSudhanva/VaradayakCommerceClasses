@@ -170,6 +170,8 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            width: 100%;
+            word-break: break-word;
         }
 
         .contact-item p {
@@ -193,7 +195,7 @@
             align-items: center;
             background: var(--accent-secondary);
             color: var(--white);
-            padding: 8px 16px;
+            padding: 8px 12px;
             border-radius: 8px;
             text-decoration: none;
             margin: 10px 0 0 0;
@@ -201,6 +203,8 @@
             transition: var(--transition);
             font-size: 0.95rem;
             align-self: flex-start;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .whatsapp-btn .material-icons {
@@ -354,18 +358,23 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 10px 5px;
+                width: 100%;
+                box-sizing: border-box;
             }
 
             .contact-item div {
                 width: 100%;
                 padding: 0;
                 align-items: center;
+                word-break: break-word;
             }
 
             .whatsapp-btn {
                 align-self: center;
-                padding: 8px 15px;
+                padding: 6px 12px;
                 margin: 10px auto 0;
+                font-size: 0.9rem;
+                width: auto;
             }
 
             .nav {

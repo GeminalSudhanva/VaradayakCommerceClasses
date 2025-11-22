@@ -11,27 +11,41 @@
 
 <style>
 :root{
-  --white:#ffffff;
-  --bg:#f2f7ff;
-  --primary:#0c4fb1;
-  --primary-dark:#083a85;
-  --accent:#1a8bff;
-  --accent-light:#cfe6ff;
-  --muted:#6b7485;
-  --card:#ffffff;
+  --body-bg: #f2f7ff;
+  --text-color: #0d1b2a;
+  --muted-text-color: #6b7485;
+  --card-bg: #ffffff;
+  --primary-color: #0c4fb1;
+  --primary-dark-color: #083a85;
+  --accent-color: #1a8bff;
+  --accent-light-color: #cfe6ff;
+  --shadow-sm-color: rgba(0,0,0,0.06);
+  --shadow-md-color: rgba(18,62,130,0.12);
+  --shadow-lg-color: rgba(18,62,130,0.14);
   --radius:14px;
-  --shadow-sm:0 4px 10px rgba(0,0,0,0.06);
-  --shadow-md:0 10px 28px rgba(18,62,130,0.12);
-  --shadow-lg:0 20px 46px rgba(18,62,130,0.14);
   --ease:cubic-bezier(.25,.8,.25,1);
+}
+
+[data-theme="dark"] {
+  --body-bg: #1a202c;
+  --text-color: #e2e8f0;
+  --muted-text-color: #a0aec0;
+  --card-bg: #2d3748;
+  --primary-color: #63b3ed;
+  --primary-dark-color: #4299e1;
+  --accent-color: #90cdf4;
+  --accent-light-color: #2a4365;
+  --shadow-sm-color: rgba(0,0,0,0.3);
+  --shadow-md-color: rgba(0,0,0,0.4);
+  --shadow-lg-color: rgba(0,0,0,0.5);
 }
 
 /* RESET */
 *{box-sizing:border-box; margin:0; padding:0;}
 body {
   font-family: Inter, sans-serif;
-  background: var(--bg);
-  color:#0d1b2a;
+  background: var(--body-bg);
+  color:var(--text-color);
   overflow-x:hidden;
   line-height:1.55;
 }
@@ -40,10 +54,10 @@ body {
 
 /* NAVBAR */
 header.nav {
-  background: var(--white);
+  background: var(--card-bg);
   border-radius:16px;
   padding:14px 20px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md-color);
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -57,9 +71,9 @@ header.nav {
 .logo-circle{
   width:62px;height:62px;
   border-radius:14px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
+  background:linear-gradient(135deg,var(--primary-color),var(--accent-color));
   box-shadow:0 6px 18px rgba(22,70,160,0.25);
-  color:var(--white);
+  color:var(--card-bg);
   display:flex;align-items:center;justify-content:center;
   font-family:"Playfair Display";
   font-size:22px;font-weight:700;
@@ -70,20 +84,20 @@ header.nav {
   object-fit:cover;
   box-shadow:0 6px 18px rgba(22,70,160,0.25);
 }
-.logo-text h1{font-size:20px;color:var(--primary-dark);margin:0;font-family:"Playfair Display";}
-.logo-text p{font-size:12px;color:var(--muted);margin-top:2px;}
+.logo-text h1{font-size:20px;color:var(--primary-dark-color);margin:0;font-family:"Playfair Display";}
+.logo-text p{font-size:12px;color:var(--muted-text-color);margin-top:2px;}
 
 nav.menu a{
   text-decoration:none;
-  color:var(--muted);
+  color:var(--muted-text-color);
   margin-left:16px;
   font-weight:600;
   padding:8px 10px;
   border-radius:8px;
 }
 nav.menu a:hover{
-  background:var(--accent-light);
-  color:var(--primary-dark);
+  background:var(--accent-light-color);
+  color:var(--primary-dark-color);
   transition:0.25s;
 }
 
@@ -96,14 +110,14 @@ nav.menu a:hover{
   text-decoration:none;
 }
 .btn-blue{
-  background:linear-gradient(90deg,var(--primary),var(--accent));
-  color:white;
-  box-shadow:var(--shadow-sm);
+  background:linear-gradient(90deg,var(--primary-color),var(--accent-color));
+  color:var(--card-bg);
+  box-shadow:var(--shadow-sm-color);
 }
 .btn-glow{
-  background:white;
-  color:var(--primary-dark);
-  border:2px solid var(--accent-light);
+  background:var(--card-bg);
+  color:var(--primary-dark-color);
+  border:2px solid var(--accent-light-color);
 }
 
 /* HERO SECTION */
@@ -122,7 +136,7 @@ nav.menu a:hover{
   position:absolute;
   top:-60px; right:-80px;
   width:320px; height:320px;
-  background:var(--accent);
+  background:var(--accent-color);
   opacity:0.18;
   border-radius:50%;
   filter:blur(80px);
@@ -132,7 +146,7 @@ nav.menu a:hover{
   position:absolute;
   bottom:-80px; left:-90px;
   width:280px; height:280px;
-  background:var(--primary);
+  background:var(--primary-color);
   opacity:0.15;
   border-radius:50%;
   filter:blur(90px);
@@ -140,33 +154,52 @@ nav.menu a:hover{
 
 /* HERO LEFT */
 .hero-left{
-  background:white;
   border-radius:18px;
   padding:42px;
-  box-shadow:var(--shadow-lg);
+  box-shadow:var(--shadow-lg-color);
   position:relative;
   overflow:hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, var(--accent-light-color) 1px, transparent 1px), linear-gradient(to bottom, var(--accent-light-color) 1px, transparent 1px);
+  background-size: 20px 20px; /* Adjust grid cell size as needed */
+  opacity: 0.2;
+  z-index: 0;
+  background-color: var(--card-bg);
+  box-shadow: 0 0 15px rgba(26, 139, 255, 0.4); /* Subtle blue glow */
 }
 .hero-left .tag{
   padding:6px 14px;
   border-radius:999px;
-  background:var(--accent-light);
-  color:var(--primary-dark);
+  background:var(--accent-light-color);
+  color:var(--primary-dark-color);
   font-weight:700;
   font-size:12px;
+  position: relative;
+  z-index: 1;
 }
 .hero-left h2{
   font-family:"Playfair Display";
   font-size:38px;
   margin-top:14px;
-  color:var(--primary-dark);
+  color:var(--primary-dark-color);
+  position: relative;
+  z-index: 1;
 }
 .hero-left p{
   margin-top:12px;
-  color:var(--muted);
+  color:var(--muted-text-color);
   font-size:16px;
+  position: relative;
+  z-index: 1;
 }
-.hero-ctas{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;}
+.hero-ctas{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;position: relative;z-index: 1;}
 
 /* KPIs */
 .kpis{
@@ -174,33 +207,35 @@ nav.menu a:hover{
   display:flex;
   flex-wrap:wrap;
   gap:14px;
+  position: relative;
+  z-index: 1;
 }
 .kpi{
   flex:1;
   min-width:130px;
   text-align:center;
-  background:var(--accent-light);
+  background:var(--accent-light-color);
   padding:14px 10px;
   border-radius:12px;
-  box-shadow:var(--shadow-sm);
+  box-shadow:var(--shadow-sm-color);
 }
-.kpi strong{font-size:24px;color:var(--primary);}
-.kpi small{color:var(--muted);font-size:14px;line-height:1.2;}
+.kpi strong{font-size:24px;color:var(--primary-color);}
+.kpi small{color:var(--muted-text-color);font-size:14px;line-height:1.2;}
 
 /* HERO RIGHT FORM */
 .hero-right{
-  background:white;
+  background:var(--card-bg);
   border-radius:18px;
   padding:22px;
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-md-color);
   border:1px solid #e6efff;
 }
 .hero-right h3{
   margin:0;
   font-size:20px;
-  color:var(--primary-dark);
+  color:var(--primary-dark-color);
 }
-.hero-right .muted{color:var(--muted);font-size:13px;margin-top:6px;}
+.hero-right .muted{color:var(--muted-text-color);font-size:13px;margin-top:6px;}
 .form-row{margin-top:14px;display:flex;flex-direction:column;gap:4px;}
 input,select,textarea{
   padding:10px 14px;
@@ -215,7 +250,7 @@ textarea{min-height:90px;}
   margin-top:40px;
   font-family:"Playfair Display";
   font-size:28px;
-  color:var(--primary-dark);
+  color:var(--primary-dark-color);
 }
 
 /* CARDS */
@@ -226,30 +261,30 @@ textarea{min-height:90px;}
   gap:20px;
 }
 .card{
-  background:white;
+  background:var(--card-bg);
   padding:22px;
   border-radius:14px;
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-md-color);
   border:1px solid #e7ecf9;
   transition:0.25s var(--ease);
 }
 .card:hover{
   transform:translateY(-8px);
-  box-shadow:var(--shadow-lg);
+  box-shadow:var(--shadow-lg-color);
 }
 .card h4{
   margin:0;
-  color:var(--primary-dark);
+  color:var(--primary-dark-color);
   font-size:18px;
   font-family:"Playfair Display";
 }
-.card p{margin-top:10px;color:var(--muted);font-size:14px;}
+.card p{margin-top:10px;color:var(--muted-text-color);font-size:14px;}
 .pill{
   display:inline-block;
   margin-top:12px;
   padding:6px 12px;
-  background:var(--accent-light);
-  color:var(--primary-dark);
+  background:var(--accent-light-color);
+  color:var(--primary-dark-color);
   font-weight:700;
   border-radius:999px;
   font-size:12px;
@@ -266,7 +301,7 @@ textarea{min-height:90px;}
 .avatar{
   width:70px;height:70px;
   border-radius:12px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
+  background:linear-gradient(135deg,var(--primary-color),var(--accent-color));
   color:white;
   display:flex;align-items:center;justify-content:center;
   font-family:"Playfair Display";font-size:22px;font-weight:700;
@@ -285,13 +320,13 @@ textarea{min-height:90px;}
   gap:18px;
 }
 .test{
-  background:white;
+  background:var(--card-bg);
   padding:18px;
   border-radius:14px;
   border:1px solid #e7ecf9;
   font-size:14px;
-  color:var(--muted);
-  box-shadow:var(--shadow-sm);
+  color:var(--muted-text-color);
+  box-shadow:var(--shadow-sm-color);
 }
 
 /* GALLERY */
@@ -306,16 +341,16 @@ textarea{min-height:90px;}
   border-radius:14px;
   background-size:cover;
   background-position:center;
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-md-color);
 }
 
 /* INFO CARD */
 .info-card{
   margin-top:14px;
-  background:white;
+  background:var(--card-bg);
   padding:20px;
   border-radius:14px;
-  box-shadow:var(--shadow-md);
+  box-shadow:var(--shadow-md-color);
   border:1px solid #e7ecf9;
 }
 
@@ -324,7 +359,7 @@ footer{
   margin-top:40px;
   padding:20px 10px;
   text-align:center;
-  color:var(--muted);
+  color:var(--muted-text-color);
 }
 
 /* RESPONSIVE */
@@ -363,6 +398,7 @@ footer{
   </nav>
 
   <div>
+    <button id="theme-toggle" class="btn btn-glow">☀️</button>
     <a class="btn btn-glow" href="tel:+919743623027">📞 9743623027</a>
     <a class="btn btn-blue" href="#contact">Apply Now</a>
   </div>
@@ -455,16 +491,16 @@ footer{
   <div class="card tutor">
     <img src="faculty-shreesh.jpeg" alt="Shreesh Bellary" class="faculty-img">
     <div>
-      <strong style="color:var(--primary-dark)">Shreesh Bellary</strong><br>
-      <span class="muted">Accountancy • 10 yrs</span>
+      <strong style="color:var(--primary-dark-color)">Shreesh Bellary</strong><br>
+      <span class="muted-text-color">Accountancy • 10 yrs</span>
     </div>
   </div>
 
   <div class="card tutor">
     <img src="faculty-lata.jpeg" alt="Lata Hiremath" class="faculty-img">
     <div>
-      <strong style="color:var(--primary-dark)">Lata Hiremath</strong><br>
-      <span class="muted">Taxes • 10 yrs</span>
+      <strong style="color:var(--primary-dark-color)">Lata Hiremath</strong><br>
+      <span class="muted-text-color">Taxes • 10 yrs</span>
     </div>
   </div>
 
@@ -488,9 +524,9 @@ The teaching is good and it is sufficient to the students who are facing difficu
 </div>
 
 <div class="info-card">
-  <h3 style="margin:0;font-family:'Playfair Display';color:var(--primary-dark)">Quick Info</h3>
-  <p class="muted" style="margin-top:10px">Adarsh Balika High School, Near NTTF, Dharwad</p>
-  <p><strong>Phone:</strong> <a href="tel:+919743623027" style="color:var(--primary-dark);text-decoration:none">9743623027</a></p>
+  <h3 style="margin:0;font-family:'Playfair Display';color:var(--primary-dark-color)">Quick Info</h3>
+  <p class="muted-text-color" style="margin-top:10px">Adarsh Balika High School, Near NTTF, Dharwad</p>
+  <p><strong>Phone:</strong> <a href="tel:+919743623027" style="color:var(--primary-dark-color);text-decoration:none">9743623027</a></p>
 </div>
 
 <footer>
@@ -517,6 +553,37 @@ function sendForm(){
 
   alert("Thanks " + name.split(" ")[0] + "! Your request is received.");
 }
+
+// Theme toggle logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  body.setAttribute('data-theme', savedTheme);
+  if (savedTheme === 'dark') {
+    themeToggle.textContent = '🌙';
+  } else {
+    themeToggle.textContent = '☀️';
+  }
+} else {
+  // Default to light theme
+  body.setAttribute('data-theme', 'light');
+  themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+  if (body.getAttribute('data-theme') === 'dark') {
+    body.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    themeToggle.textContent = '☀️';
+  } else {
+    body.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '🌙';
+  }
+});
 </script>
 
 </body>

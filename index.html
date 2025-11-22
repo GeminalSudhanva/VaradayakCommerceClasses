@@ -373,6 +373,16 @@ footer{
   .cards,.faculty-grid,.test-grid,.gallery{grid-template-columns:1fr;}
   .logo-circle{width:50px;height:50px;font-size:18px;}
   header.nav{flex-direction:column;gap:12px;}
+  nav.menu, .nav-buttons {
+    display: none; /* Hidden by default on mobile */
+  }
+  .mobile-only {
+    display: block; /* Show hamburger icon on mobile */
+  }
+  header.nav.menu-open nav.menu,
+  header.nav.menu-open .nav-buttons {
+    display: flex; /* Display when menu is open */
+  }
   nav.menu {
     display: flex;
     flex-direction: column;
@@ -389,6 +399,14 @@ footer{
     gap: 10px;
   }
 }
+
+/* Desktop styles to hide mobile-only elements */
+@media (min-width:721px){
+  .mobile-only {
+    display: none !important;
+  }
+}
+
 </style>
 </head>
 
@@ -417,6 +435,7 @@ footer{
     <a class="btn btn-glow" href="tel:+919743623027">📞 9743623027</a>
     <a class="btn btn-blue" href="#contact">Apply Now</a>
   </div>
+  <div id="mobile-menu-toggle" class="mobile-only">☰</div>
 </header>
 
 <!-- HERO -->
@@ -597,6 +616,27 @@ themeToggle.addEventListener('click', () => {
     body.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
     themeToggle.textContent = '🌙';
+  }
+});
+
+// Mobile menu toggle logic
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const headerNav = document.querySelector('header.nav');
+const navLinks = document.querySelectorAll('nav.menu a');
+
+mobileMenuToggle.addEventListener('click', () => {
+  headerNav.classList.toggle('menu-open');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    headerNav.classList.remove('menu-open');
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!headerNav.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+    headerNav.classList.remove('menu-open');
   }
 });
 </script>

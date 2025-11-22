@@ -362,6 +362,17 @@ footer{
   color:var(--muted-text-color);
 }
 
+.fade-in-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* RESPONSIVE */
 @media (max-width:1080px){
   .hero{grid-template-columns:1fr;}
@@ -496,8 +507,8 @@ footer{
 </section>
 
 <!-- COURSES -->
-<h2 id="courses" class="section-title">Our Programs</h2>
-<div class="cards">
+<h2 id="courses" class="section-title fade-in-hidden">Our Programs</h2>
+<div class="cards fade-in-hidden">
   <div class="card">
     <h4>I PUC Commerce</h4>
     <p>Build a strong commerce foundation with weekly tests, notes and fun teaching.</p>
@@ -518,8 +529,8 @@ footer{
 </div>
 
 <!-- FACULTY -->
-<h2 id="faculty" class="section-title">Faculty</h2>
-<div class="faculty-grid">
+<h2 id="faculty" class="section-title fade-in-hidden">Faculty</h2>
+<div class="faculty-grid fade-in-hidden">
   <div class="card tutor">
     <img src="faculty-shreesh.jpeg" alt="Shreesh Bellary" class="faculty-img">
     <div>
@@ -539,8 +550,8 @@ footer{
 </div>
 
 <!-- TESTIMONIALS -->
-<h2 id="testimonials" class="section-title">Success Stories</h2>
-<div class="test-grid">
+<h2 id="testimonials" class="section-title fade-in-hidden">Success Stories</h2>
+<div class="test-grid fade-in-hidden">
   <div class="test">"Teachers give freedom to ask any doubts if you get even it's small.
 The teaching is good and it is sufficient to the students who are facing difficulties in their studies."<br><strong>— Jadhav Raju</strong></div>
   <div class="test">“I'm thrilled to share my exceptional experience with Varadayak Commerce Classes! As a proud member of the inaugural batch, I can confidently attest that this institution has played a pivotal role in shaping my academic success.”<br><strong>— Nooreain A Gulbarga</strong></div>
@@ -548,14 +559,14 @@ The teaching is good and it is sufficient to the students who are facing difficu
 </div>
 
 <!-- GALLERY -->
-<h2 class="section-title">Life at Varadayak</h2>
-<div class="gallery">
+<h2 class="section-title fade-in-hidden">Life at Varadayak</h2>
+<div class="gallery fade-in-hidden">
   <div class="photo" style="background-image:url('WhatsApp Image 2025-03-01 at 7.29.40 PM.jpeg')"></div>
   <div class="photo" style="background-image:url('WhatsApp Image 2025-03-01 at 7.35.52 PM.jpeg')"></div>
   <div class="photo" style="background-image:url('varadayak-commerce-classes-dharwad-tutorials-inzskzf2cu.jpg')"></div>
 </div>
 
-<div class="info-card">
+<div class="info-card fade-in-hidden">
   <h3 style="margin:0;font-family:'Playfair Display';color:var(--primary-dark-color)">Quick Info</h3>
   <p class="muted-text-color" style="margin-top:10px">Adarsh Balika High School, Near NTTF, Dharwad</p>
   <p><strong>Phone:</strong> <a href="tel:+919743623027" style="color:var(--primary-dark-color);text-decoration:none">9743623027</a></p>
@@ -636,6 +647,23 @@ document.addEventListener('click', (event) => {
   if (!headerNav.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
     headerNav.classList.remove('menu-open');
   }
+});
+
+// Fade-in on scroll logic
+const fadeInElements = document.querySelectorAll('.fade-in-hidden');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in-visible');
+      entry.target.classList.remove('fade-in-hidden');
+      observer.unobserve(entry.target); // Stop observing once it's visible
+    }
+  });
+}, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+fadeInElements.forEach(element => {
+  observer.observe(element);
 });
 </script>
 
